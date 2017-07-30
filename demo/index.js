@@ -50,6 +50,22 @@ var Editor = React.createClass({
 		});
 	},
 
+	onEditorFocus: function(range, source) {
+		this.setState({
+			events: [
+				'focus('+this.formatRange(range)+')'
+			].concat(this.state.events)
+		});
+	},
+
+	onEditorBlur: function(previousRange, source) {
+		this.setState({
+			events: [
+				'blur('+this.formatRange(previousRange)+')'
+			].concat(this.state.events)
+		});
+	},
+
 	onToggle: function() {
 		this.setState({ enabled: !this.state.enabled });
 	},
@@ -69,7 +85,9 @@ var Editor = React.createClass({
 					value: this.state.value,
 					readOnly: this.state.readOnly,
 					onChange: this.onEditorChange,
-					onChangeSelection: this.onEditorChangeSelection
+					onChangeSelection: this.onEditorChangeSelection,
+					onFocus: this.onEditorFocus,
+					onBlur: this.onEditorBlur,
 				})
 			)
 		);
