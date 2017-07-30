@@ -26,11 +26,11 @@ var QuillComponent = React.createClass({
 		bounds: T.oneOfType([T.string, T.element]),
 		onChange: T.func,
 		onChangeSelection: T.func,
+		onFocus: T.func,
+		onBlur: T.func,
 		onKeyPress: T.func,
 		onKeyDown: T.func,
 		onKeyUp: T.func,
-		onFocus: T.func,
-		onBlur: T.func,
 
 		modules: function(props) {
 			var isNotObject = T.object.apply(this, arguments);
@@ -114,11 +114,13 @@ var QuillComponent = React.createClass({
 		'className',
 		'style',
 		'placeholder',
+		'onChange',
+		'onChangeSelection',
+		'onFocus',
+		'onBlur',
 		'onKeyPress',
 		'onKeyDown',
 		'onKeyUp',
-		'onChange',
-		'onChangeSelection',
 	],
 
 	getDefaultProps: function() {
